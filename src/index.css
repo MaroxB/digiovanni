@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Paper texture via CSS noise */
+body {
+  background-color: #F4EFE6;
+  color: #1A1A1A;
+}
+
+.paper-texture {
+  position: relative;
+}
+.paper-texture::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Sepia on all images */
+img {
+  filter: sepia(20%) contrast(0.92) brightness(0.97);
+}
+
+/* Global border-radius override */
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+
+/* Divider utility */
+.divider {
+  border-top: 1px solid #1A1A1A;
+  opacity: 0.2;
+}
+
+.divider-strong {
+  border-top: 2px solid #1A1A1A;
+  opacity: 0.35;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Button hover */
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border: 2px solid #1A1A1A;
+  background: transparent;
+  color: #1A1A1A;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-primary:hover {
+  background: #1A1A1A;
+  color: #F4EFE6;
+}
+
+.btn-red {
+  border-color: #A61E22;
+  color: #A61E22;
+}
+.btn-red:hover {
+  background: #A61E22;
+  color: #F4EFE6;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Gallery image hover zoom */
+.gallery-img {
+  overflow: hidden;
+  display: block;
+}
+.gallery-img img {
+  transition: transform 0.4s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-img:hover img {
+  transform: scale(1.04);
+}
