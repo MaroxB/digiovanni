@@ -92,7 +92,7 @@ function Header() {
         </p>
       </div>
       <div className="divider-strong" style={{ borderColor: '#1A1A1A', borderTopWidth: '1px', opacity: 0.2 }} />
-      <nav className="flex justify-center gap-8 py-3 px-4">
+      <nav className="flex justify-center gap-4 md:gap-8 py-3 px-4 flex-wrap">
         {['Menu', 'About', 'Gallery', 'Reservations'].map((item) => (
           <a
             key={item}
@@ -118,7 +118,7 @@ function Hero() {
       style={{ backgroundColor: '#E8D9C5', minHeight: '520px' }}
     >
       {/* Left */}
-      <div className="flex flex-col justify-center px-10 md:px-16 py-16 fade-in">
+      <div className="flex flex-col justify-center px-6 md:px-16 py-12 md:py-16 fade-in">
         <p
           className="text-xs tracking-[0.3em] uppercase mb-4"
           style={{ fontFamily: 'Cinzel, serif', color: '#2E5E3E' }}
@@ -146,16 +146,21 @@ function Hero() {
       </div>
 
       {/* Right */}
-      <div className="relative overflow-hidden" style={{ minHeight: '360px' }}>
+      <div className="relative overflow-hidden" style={{ minHeight: '280px' }}>
         <img
           src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=900&q=80"
           alt="Pasta dish"
           className="w-full h-full object-cover fade-in"
           style={{ animationDelay: '0.3s', opacity: 0 }}
         />
+        {/* gradient blends into left panel on desktop, fades top on mobile */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden md:block"
           style={{ background: 'linear-gradient(to right, #E8D9C5 0%, transparent 25%)' }}
+        />
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{ background: 'linear-gradient(to bottom, #E8D9C5 0%, transparent 30%)' }}
         />
       </div>
     </section>
@@ -317,14 +322,15 @@ function MenuPreview() {
           <div className="mt-4 mx-auto" style={{ width: 48, borderTop: '2px solid #A61E22' }} />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0">
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0"
+          style={{ border: '1px solid rgba(26,26,26,0.15)' }}
+        >
           {MENU_CATEGORIES.map((cat, ci) => (
             <div
               key={cat.title}
-              className="p-8"
-              style={{
-                borderLeft: ci > 0 ? '1px solid rgba(26,26,26,0.15)' : undefined,
-              }}
+              className="p-6 md:p-8"
+              style={{ borderRight: '1px solid rgba(26,26,26,0.15)', borderBottom: '1px solid rgba(26,26,26,0.15)' }}
             >
               <h3
                 className="text-xl mb-1"
@@ -436,10 +442,10 @@ function Reservation() {
 
         {/* Card */}
         <div
+          className="px-5 py-8 md:px-10 md:py-10"
           style={{
             border: '1px solid rgba(26,26,26,0.3)',
             backgroundColor: '#EDE5D8',
-            padding: '2.5rem',
           }}
         >
           {submitted ? (
@@ -461,7 +467,7 @@ function Reservation() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name + Guests */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs tracking-widest uppercase mb-1"
                     style={{ fontFamily: 'Cinzel, serif', color: '#1A1A1A', opacity: 0.7 }}>
@@ -507,7 +513,7 @@ function Reservation() {
               </div>
 
               {/* Date + Time */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs tracking-widest uppercase mb-1"
                     style={{ fontFamily: 'Cinzel, serif', color: '#1A1A1A', opacity: 0.7 }}>
