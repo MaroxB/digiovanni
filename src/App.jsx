@@ -61,7 +61,7 @@ const GALLERY_IMGS = [
   'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80',
   'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80',
   'https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=600&q=80',
-  'https://images.unsplash.com/photo-1551183053-bf91798d047a?w=600&q=80',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80',
   'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80',
   'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80',
 ]
